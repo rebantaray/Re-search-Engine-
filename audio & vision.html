@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/x-icon" href="F:\Research file pack\Images\logo.png">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work in Progress | Re-search Hub</title>
+    <style>
+        :root {
+            --accent-blue: #00d4ff;
+            --glass: rgba(255, 255, 255, 0.94);
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                              url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .construction-card {
+            background: var(--glass);
+            padding: 60px;
+            border-radius: 40px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: wrench-swing 2s infinite ease-in-out;
+        }
+
+        @keyframes wrench-swing {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-20deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-blue);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            background: #fff;
+            box-shadow: 0 0 25px var(--accent-blue);
+        }
+
+        .creator-tag {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="construction-card">
+        <div class="icon">🛠️</div>
+        <h1>Under Construction</h1>
+        <p>Rebanta is currently updating the data sets for this topic. Great things take time to build!</p>
+        
+        <a href="index.html" class="back-btn">Go Back to Hub</a>
+
+        <div class="creator-tag">
+            A Project by <b>Rebanta Ray</b>
+        </div>
+    </div>
+
+</body>
+</html>

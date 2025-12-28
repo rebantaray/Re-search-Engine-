@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="F:\Research file pack\Images\logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-search Engine | The Knowledge Hub</title>
+    <style>
+        :root {
+            --accent-blue: #00d4ff;
+            --earth-green: #2ecc71;
+            --body-red: #e74c3c;
+            --space-purple: #9b59b6;
+            --auto-orange: #f39c12;
+            --photo-pink: #fd79a8;
+            --politics-gold: #d4af37;
+            --glass: rgba(255, 255, 255, 0.94);
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        /* --- LOGO AND HEADER STYLES --- */
+        .header-banner { 
+            padding: 60px 20px 30px; 
+            color: white; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .site-logo {
+            width: 120px; /* Adjust size as needed */
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+            transition: transform 0.3s ease;
+        }
+
+        .site-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-banner h1 { 
+            font-size: clamp(2.5rem, 8vw, 4rem); 
+            margin: 0; 
+            color: var(--accent-blue); 
+            text-transform: uppercase; 
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .header-banner p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* --- CONTAINER STYLES --- */
+        .main-container {
+            background: var(--glass);
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box { margin-bottom: 50px; }
+        input { 
+            padding: 18px 30px; 
+            width: 60%; 
+            border-radius: 50px; 
+            border: 2px solid #ddd; 
+            font-size: 18px; 
+            outline: none; 
+            transition: 0.3s;
+        }
+
+        .go-btn { 
+            padding: 18px 45px; 
+            background: var(--accent-blue); 
+            border: none; 
+            color: #000;
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-weight: 900; 
+            margin-left: 10px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .choices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .choice-card {
+            padding: 25px 15px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 1px solid #eee; 
+            background: #fff;
+        }
+
+        .choice-card:hover { transform: translateY(-12px); color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .earth:hover { background: var(--earth-green); }
+        .auto:hover { background: var(--auto-orange); }
+        .audio:hover { background: var(--accent-blue); }
+        .ent:hover { background: #34495e; }
+        .body:hover { background: var(--body-red); }
+        .space:hover { background: var(--space-purple); }
+        .photo:hover { background: var(--photo-pink); border-color: var(--photo-pink); }
+        .politics:hover { background: var(--politics-gold); border-color: var(--politics-gold); }
+
+        .card-icon { font-size: 35px; display: block; margin-bottom: 10px; }
+        .card-name { font-weight: 800; font-size: 14px; text-transform: uppercase; }
+
+        .facts-section {
+            background: rgba(240, 248, 255, 0.6); 
+            padding: 25px; 
+            border-radius: 25px;
+            text-align: left; 
+            border-left: 8px solid var(--accent-blue);
+            margin-top: 20px;
+        }
+
+        .creator-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            text-align: left;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .creator-image { flex: 1; min-width: 200px; max-width: 280px; }
+        .creator-image img {
+            width: 100%;
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 5px solid var(--accent-blue);
+        }
+
+        .creator-info { flex: 2; min-width: 300px; }
+        .creator-info h2 { margin-top: 0; color: #1a1a1a; font-size: 1.8rem; }
+        .creator-info p { line-height: 1.6; font-size: 1.05rem; color: #444; }
+
+        .creator-quote {
+            margin-top: 20px;
+            padding: 15px 25px;
+            background: #f0faff;
+            border-radius: 15px;
+            font-style: italic;
+            border-left: 5px solid var(--accent-blue);
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .highlight { color: var(--accent-blue); font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .creator-section { flex-direction: column; text-align: center; }
+            .creator-image { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <img src="F:\Research file pack\Images\logo.png" alt="Re-search Logo" class="site-logo">
+        <h1>RE-SEARCH HUB</h1>
+        <p>Your portal to explore the world with topics you wonder about</p>
+    </div>
+
+    <div class="main-container">
+        <div class="search-box">
+            <input type="text" id="userBox" placeholder="Explore Earth, Politics, Photography and more...">
+            <button class="go-btn" onclick="searchTopic()">EXPLORE</button>
+        </div>
+
+        <h3 style="letter-spacing: 2px; color: #555;">POPULAR CATEGORIES</h3>
+        
+        <div class="choices-grid">
+            <div class="choice-card earth" onclick="quickFill('Mother Earth')">
+                <span class="card-icon">🌍</span><span class="card-name">Mother Earth</span>
+            </div>
+            <div class="choice-card auto" onclick="quickFill('Automobiles')">
+                <span class="card-icon">🏎️</span><span class="card-name">Automobiles</span>
+            </div>
+            <div class="choice-card audio" onclick="quickFill('Audio and Vision')">
+                <span class="card-icon">🎧</span><span class="card-name">Audio & Vision</span>
+            </div>
+            <div class="choice-card ent" onclick="quickFill('Entertainment')">
+                <span class="card-icon">🎬</span><span class="card-name">Entertainment</span>
+            </div>
+            <div class="choice-card body" onclick="quickFill('Human Body')">
+                <span class="card-icon">🫀</span><span class="card-name">Human Body</span>
+            </div>
+            <div class="choice-card space" onclick="quickFill('Space')">
+                <span class="card-icon">🚀</span><span class="card-name">Outer World</span>
+            </div>
+            <div class="choice-card photo" onclick="quickFill('Photography')">
+                <span class="card-icon">📷</span><span class="card-name">Photography</span>
+            </div>
+            <div class="choice-card politics" onclick="quickFill('Nations and Politics')">
+                <span class="card-icon">🏛️</span><span class="card-name">Nations & Politics</span>
+            </div>
+        </div>
+
+        <div class="facts-section">
+            <h3>💡 DID YOU KNOW?</h3>
+            <div class="fact-item">🌍 <b>Earth:</b> The Earth's core is as hot as the surface of the sun.</div>
+            <div class="fact-item">🚀 <b>Space:</b> Space is completely silent because there is no air to carry sound.</div>
+            <div class="fact-item">🏛️ <b>Politics:</b> The word "politics" comes from the Greek word 'Polis', meaning 'City-State'.</div>
+            <div class="fact-item">📷 <b>Photo:</b> The first color photograph was taken in 1861 by Thomas Sutton.</div>
+        </div>
+
+        <div class="creator-section">
+            <div class="creator-image">
+                <img src="F:\Research file pack\Images\rebanta.jpg.jpg" alt="Rebanta Ray">
+            </div>
+            <div class="creator-info">
+                <h2>Meet the Creator</h2>
+                <p>Hello! Myself <span class="highlight">Rebanta Ray</span>, a proud student of <span class="highlight">Don Bosco Park Circus</span>. I was in Class 8 when I first wanted to code or learn about app development. I tried many times but never succeeded at first.</p>
+                <p>Suddenly, one day while looking for something else, I found my old <span class="highlight">Class 6 and 7 Computer Science books</span>. I opened them and remembered learning about <b>HTML</b>—the language of the web. Inspired, I started again and built this prototype as a test model of what I will be building later in the future.</p>
+                
+                <div class="creator-quote">
+                    "Learning is never complete because data sets keep changing, and if you do not update yourself with time, you lose in life."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function quickFill(topic) {
+            document.getElementById("userBox").value = topic;
+            searchTopic();
+        }
+
+        function searchTopic() {
+            var input = document.getElementById("userBox").value.toLowerCase().trim();
+
+            if (input.includes("earth")) { window.location.href = "mother earth.html"; } 
+            else if (input.includes("auto") || input.includes("car")) { window.location.href = "automobiles.html"; }
+            else if (input.includes("audio") || input.includes("vision")) { window.location.href = "audio & vision.html"; }
+            else if (input.includes("entertainment")) { window.location.href = "entertainment.html"; }
+            else if (input.includes("body") || input.includes("human")) { window.location.href = "human body.html"; }
+            else if (input.includes("space") || input.includes("outer")) { window.location.href = "outer world.html"; }
+            else if (input.includes("photo")) { window.location.href = "photography.html"; }
+            else if (input.includes("nation") || input.includes("politics")) { window.location.href = "nations & politics.html"; }
+            else { alert("Select a topic from the categories above!"); }
+        }
+    </script>
+
+</body>
+</html>
